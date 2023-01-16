@@ -26,35 +26,35 @@ namespace PlinulCuBuletinul
 		private bool SaveRegistryOptions()
 		{
 			if (tbURL.Text == ""){
-				MessageBox.Show("URL-ul site-ului nu a fost completat!");
+				MessageBox.Show("URL-ul site-ului nu a fost completat!", "Plinul Cu Buletinul", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return false;
 				
 			}
 			if (tbConsumerKey.Text == "") {
-				MessageBox.Show("Consumer Key-ul nu a fost completat!");
+				MessageBox.Show("Consumer Key-ul nu a fost completat!", "Plinul Cu Buletinul", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return false;
 			}
 			if (tbConsumerSecret.Text == ""){
 
-				MessageBox.Show("Consumer Secret nu a fost completat!");
+				MessageBox.Show("Consumer Secret nu a fost completat!", "Plinul Cu Buletinul", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return false;
 			}
 			
 			if (tbURLMol.Text == "")
 			{
-				MessageBox.Show("URL site-ului Mol trebuie completat!");
+				MessageBox.Show("URL site-ului Mol trebuie completat!", "Plinul Cu Buletinul", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return false;
 			}
 			
 			if (tbUsernameMol.Text == "")
 			{
-				MessageBox.Show("Username-ul de autentificare pe site-ul Mol trebuie completat!");	
+				MessageBox.Show("Username-ul de autentificare pe site-ul Mol trebuie completat!", "Plinul Cu Buletinul", MessageBoxButtons.OK, MessageBoxIcon.Warning);	
 				return false; 
 
 			}
 			if (tbPassword.Text == "")
 			{
-				MessageBox.Show("Parola de autentificare pe site-ul Mol trebuie completata!");
+				MessageBox.Show("Parola de autentificare pe site-ul Mol trebuie completata!", "Plinul Cu Buletinul", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return false;
 			}
 			RegistryKey key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\PlinulCuBuletinul");
@@ -71,15 +71,58 @@ namespace PlinulCuBuletinul
 		private void LoadRegistryOptions()
 		{
 			RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\PlinulCuBuletinul");
+			string keyName = @"HKEY_CURRENT_USER\SOFTWARE\PlinulCuBuletinul";
 			if (key != null)
 			{
+				if (Registry.GetValue(keyName, "url_site", null) != null)
+				{
+					url_site = key.GetValue("url_site").ToString();
+				}
+				else
+				{
+					url_site = "";
+				}
+				if (Registry.GetValue(keyName, "consumer_key", null) != null)
+				{
+					consumer_key = key.GetValue("consumer_key").ToString();
+				}
+				else
+				{
+					consumer_key = "";
+				}
+				if (Registry.GetValue(keyName, "consumer_secret", null) != null)
+				{
+					consumer_secret = key.GetValue("consumer_secret").ToString();
+				}
+				else
+				{
+					consumer_secret = "";
+				}
+				if (Registry.GetValue(keyName, "url_mol", null) != null)
+				{
+					url_mol = key.GetValue("url_mol").ToString();
+				}
+				else
+				{
+					url_mol = "";
 
-				url_site = key.GetValue("url_site").ToString();
-				consumer_key = key.GetValue("consumer_key").ToString();
-				consumer_secret = key.GetValue("consumer_secret").ToString();
-				url_mol = key.GetValue("url_mol").ToString();
-				username_mol = key.GetValue("username_mol").ToString();
-				password_mol = key.GetValue("password_mol").ToString();
+				}
+				if (Registry.GetValue(keyName, "username_mol", null) != null)
+				{
+					username_mol = key.GetValue("username_mol").ToString();
+				}
+				else
+				{
+					username_mol = "";
+				}
+				if (Registry.GetValue(keyName, "password_mol", null) != null)
+				{
+					password_mol = key.GetValue("password_mol").ToString();
+				}
+				else
+				{
+					password_mol = "";
+				}
 		
 				tbURL.Text = url_site;
 				tbConsumerKey.Text = consumer_key;
@@ -123,7 +166,7 @@ namespace PlinulCuBuletinul
 		private void btnOk_Click(object sender, EventArgs e)
 		{
 			if (SaveRegistryOptions()){
-				MessageBox.Show("Optiunile au fost salvate cu succes!");
+				MessageBox.Show("Optiunile au fost salvate cu succes!", "Plinul Cu Buletinul", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				this.Close();
 			}
 		}
