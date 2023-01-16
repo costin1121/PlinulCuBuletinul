@@ -23,6 +23,7 @@ namespace PlinulCuBuletinul
 		public string url_mol;
 		public string username_mol;
 		public string password_mol;
+		public string interval_trimitere;
 		private bool SaveRegistryOptions()
 		{
 			if (tbURL.Text == ""){
@@ -64,6 +65,7 @@ namespace PlinulCuBuletinul
 			key.SetValue("url_mol", tbURLMol.Text);
 			key.SetValue("username_mol", tbUsernameMol.Text);
 			key.SetValue("password_mol", tbPassword.Text);
+			key.SetValue("interval_trimitere", numericInterval.Value.ToString());
 			key.Close();
 			return true;
 		}
@@ -123,13 +125,22 @@ namespace PlinulCuBuletinul
 				{
 					password_mol = "";
 				}
-		
+				if (Registry.GetValue(keyName, "interval_trimitere", null) != null)
+				{
+					interval_trimitere = key.GetValue("interval_trimitere").ToString();
+				}
+				else
+				{
+					interval_trimitere = "2";
+				}
+
 				tbURL.Text = url_site;
 				tbConsumerKey.Text = consumer_key;
 				tbConsumerSecret.Text = consumer_secret;
 				tbURLMol.Text = url_mol;
 				tbUsernameMol.Text = username_mol;
 				tbPassword.Text = password_mol;
+				numericInterval.Value = Convert.ToDecimal(interval_trimitere);
 			}
 		}
 		private void btnExit_Click(object sender, EventArgs e)
@@ -174,6 +185,16 @@ namespace PlinulCuBuletinul
 		private void frmOptions_Shown(object sender, EventArgs e)
 		{
 			//LoadRegistryOptions()
+		}
+
+		private void label5_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void label6_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 }
