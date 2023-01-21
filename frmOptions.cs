@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using Dashboard;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -143,6 +144,7 @@ namespace PlinulCuBuletinul
 				numericInterval.Value = Convert.ToDecimal(interval_trimitere);
 			}
 		}
+
 		private void btnExit_Click(object sender, EventArgs e)
 		{
 			this.Close();
@@ -176,16 +178,27 @@ namespace PlinulCuBuletinul
 
 		private void btnOk_Click(object sender, EventArgs e)
 		{
+			int newValue = 2;
 			if (SaveRegistryOptions()){
-				MessageBox.Show("Optiunile au fost salvate cu succes!", "Plinul Cu Buletinul", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				//MessageBox.Show("Optiunile au fost salvate cu succes!", "Plinul Cu Buletinul", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				frmMain.url_site = tbURL.Text;
+				frmMain.consumer_secret = tbConsumerSecret.Text;
+				frmMain.consumer_key= tbConsumerKey.Text;
+				newValue = Convert.ToInt32(numericInterval.Value);
+				
+				frmMain.main.Log = "[" + DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss") + "] - " + "Optiunile au fost salvate cu success!" + Environment.NewLine;
+				frmMain.initTimer(newValue);
+
 				this.Close();
 			}
 		}
+
 
 		private void frmOptions_Shown(object sender, EventArgs e)
 		{
 			//LoadRegistryOptions()
 		}
+
 
 		private void label5_Click(object sender, EventArgs e)
 		{
