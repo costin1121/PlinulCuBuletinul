@@ -36,6 +36,8 @@
 			System.Windows.Forms.Label label5;
 			System.Windows.Forms.Label label6;
 			System.Windows.Forms.Label label7;
+			System.Windows.Forms.Label label8;
+			System.Windows.Forms.Label label10;
 			this.btnExit = new System.Windows.Forms.Button();
 			this.lbltitle = new System.Windows.Forms.Label();
 			this.tbURL = new System.Windows.Forms.TextBox();
@@ -46,6 +48,8 @@
 			this.btnOk = new System.Windows.Forms.Button();
 			this.tbURLMol = new System.Windows.Forms.TextBox();
 			this.numericInterval = new System.Windows.Forms.NumericUpDown();
+			this.tbNrCard = new System.Windows.Forms.TextBox();
+			this.tbSerieCard = new System.Windows.Forms.TextBox();
 			label9 = new System.Windows.Forms.Label();
 			label1 = new System.Windows.Forms.Label();
 			label2 = new System.Windows.Forms.Label();
@@ -54,6 +58,8 @@
 			label5 = new System.Windows.Forms.Label();
 			label6 = new System.Windows.Forms.Label();
 			label7 = new System.Windows.Forms.Label();
+			label8 = new System.Windows.Forms.Label();
+			label10 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.numericInterval)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -144,6 +150,34 @@
 			label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			label5.Click += new System.EventHandler(this.label5_Click);
 			// 
+			// label6
+			// 
+			label6.AutoSize = true;
+			label6.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			label6.ForeColor = System.Drawing.Color.White;
+			label6.Location = new System.Drawing.Point(31, 343);
+			label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			label6.Name = "label6";
+			label6.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			label6.Size = new System.Drawing.Size(162, 28);
+			label6.TabIndex = 29;
+			label6.Text = "Interval verificare";
+			label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			label6.Click += new System.EventHandler(this.label6_Click);
+			// 
+			// label7
+			// 
+			label7.AutoSize = true;
+			label7.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			label7.ForeColor = System.Drawing.Color.White;
+			label7.Location = new System.Drawing.Point(345, 348);
+			label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			label7.Name = "label7";
+			label7.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+			label7.Size = new System.Drawing.Size(64, 23);
+			label7.TabIndex = 30;
+			label7.Text = "minute";
+			// 
 			// btnExit
 			// 
 			this.btnExit.FlatAppearance.BorderSize = 0;
@@ -174,7 +208,7 @@
 			// tbURL
 			// 
 			this.tbURL.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.tbURL.Location = new System.Drawing.Point(206, 91);
+			this.tbURL.Location = new System.Drawing.Point(206, 90);
 			this.tbURL.Margin = new System.Windows.Forms.Padding(4);
 			this.tbURL.Name = "tbURL";
 			this.tbURL.Size = new System.Drawing.Size(421, 22);
@@ -183,7 +217,7 @@
 			// tbConsumerKey
 			// 
 			this.tbConsumerKey.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.tbConsumerKey.Location = new System.Drawing.Point(206, 136);
+			this.tbConsumerKey.Location = new System.Drawing.Point(206, 135);
 			this.tbConsumerKey.Margin = new System.Windows.Forms.Padding(4);
 			this.tbConsumerKey.Name = "tbConsumerKey";
 			this.tbConsumerKey.Size = new System.Drawing.Size(421, 22);
@@ -192,7 +226,7 @@
 			// tbConsumerSecret
 			// 
 			this.tbConsumerSecret.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.tbConsumerSecret.Location = new System.Drawing.Point(206, 177);
+			this.tbConsumerSecret.Location = new System.Drawing.Point(206, 176);
 			this.tbConsumerSecret.Margin = new System.Windows.Forms.Padding(4);
 			this.tbConsumerSecret.Name = "tbConsumerSecret";
 			this.tbConsumerSecret.Size = new System.Drawing.Size(421, 22);
@@ -202,7 +236,7 @@
 			// tbUsernameMol
 			// 
 			this.tbUsernameMol.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.tbUsernameMol.Location = new System.Drawing.Point(206, 259);
+			this.tbUsernameMol.Location = new System.Drawing.Point(206, 258);
 			this.tbUsernameMol.Margin = new System.Windows.Forms.Padding(4);
 			this.tbUsernameMol.Name = "tbUsernameMol";
 			this.tbUsernameMol.Size = new System.Drawing.Size(421, 22);
@@ -211,7 +245,7 @@
 			// tbPassword
 			// 
 			this.tbPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.tbPassword.Location = new System.Drawing.Point(206, 303);
+			this.tbPassword.Location = new System.Drawing.Point(206, 302);
 			this.tbPassword.Margin = new System.Windows.Forms.Padding(4);
 			this.tbPassword.Name = "tbPassword";
 			this.tbPassword.PasswordChar = '*';
@@ -226,7 +260,7 @@
 			this.btnOk.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnOk.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
 			this.btnOk.Image = global::PlinulCuBuletinul.Properties.Resources.symbol_check_icon;
-			this.btnOk.Location = new System.Drawing.Point(537, 411);
+			this.btnOk.Location = new System.Drawing.Point(539, 428);
 			this.btnOk.Margin = new System.Windows.Forms.Padding(4);
 			this.btnOk.Name = "btnOk";
 			this.btnOk.Size = new System.Drawing.Size(90, 36);
@@ -239,7 +273,7 @@
 			// tbURLMol
 			// 
 			this.tbURLMol.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.tbURLMol.Location = new System.Drawing.Point(206, 219);
+			this.tbURLMol.Location = new System.Drawing.Point(206, 218);
 			this.tbURLMol.Margin = new System.Windows.Forms.Padding(4);
 			this.tbURLMol.Name = "tbURLMol";
 			this.tbURLMol.Size = new System.Drawing.Size(421, 22);
@@ -248,7 +282,7 @@
 			// numericInterval
 			// 
 			this.numericInterval.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.numericInterval.Location = new System.Drawing.Point(206, 348);
+			this.numericInterval.Location = new System.Drawing.Point(206, 347);
 			this.numericInterval.Maximum = new decimal(new int[] {
             6000,
             0,
@@ -268,40 +302,62 @@
             0,
             0});
 			// 
-			// label6
+			// label8
 			// 
-			label6.AutoSize = true;
-			label6.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			label6.ForeColor = System.Drawing.Color.White;
-			label6.Location = new System.Drawing.Point(31, 343);
-			label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			label6.Name = "label6";
-			label6.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			label6.Size = new System.Drawing.Size(162, 28);
-			label6.TabIndex = 29;
-			label6.Text = "Interval verificare";
-			label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			label6.Click += new System.EventHandler(this.label6_Click);
+			label8.AutoSize = true;
+			label8.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			label8.ForeColor = System.Drawing.Color.White;
+			label8.Location = new System.Drawing.Point(41, 386);
+			label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			label8.Name = "label8";
+			label8.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			label8.Size = new System.Drawing.Size(152, 28);
+			label8.TabIndex = 31;
+			label8.Text = "Inceput Nr. Card";
+			label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
-			// label7
+			// tbNrCard
 			// 
-			label7.AutoSize = true;
-			label7.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			label7.ForeColor = System.Drawing.Color.White;
-			label7.Location = new System.Drawing.Point(345, 348);
-			label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			label7.Name = "label7";
-			label7.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-			label7.Size = new System.Drawing.Size(64, 23);
-			label7.TabIndex = 30;
-			label7.Text = "minute";
+			this.tbNrCard.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.tbNrCard.Location = new System.Drawing.Point(206, 391);
+			this.tbNrCard.Margin = new System.Windows.Forms.Padding(4);
+			this.tbNrCard.Name = "tbNrCard";
+			this.tbNrCard.Size = new System.Drawing.Size(132, 22);
+			this.tbNrCard.TabIndex = 32;
+			// 
+			// label10
+			// 
+			label10.AutoSize = true;
+			label10.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			label10.ForeColor = System.Drawing.Color.White;
+			label10.Location = new System.Drawing.Point(346, 385);
+			label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			label10.Name = "label10";
+			label10.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			label10.Size = new System.Drawing.Size(101, 28);
+			label10.TabIndex = 33;
+			label10.Text = "Serie Card";
+			label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// tbSerieCard
+			// 
+			this.tbSerieCard.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.tbSerieCard.Location = new System.Drawing.Point(455, 390);
+			this.tbSerieCard.Margin = new System.Windows.Forms.Padding(4);
+			this.tbSerieCard.Name = "tbSerieCard";
+			this.tbSerieCard.Size = new System.Drawing.Size(172, 22);
+			this.tbSerieCard.TabIndex = 34;
 			// 
 			// frmOptions
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-			this.ClientSize = new System.Drawing.Size(655, 476);
+			this.ClientSize = new System.Drawing.Size(655, 475);
+			this.Controls.Add(this.tbSerieCard);
+			this.Controls.Add(label10);
+			this.Controls.Add(this.tbNrCard);
+			this.Controls.Add(label8);
 			this.Controls.Add(label7);
 			this.Controls.Add(label6);
 			this.Controls.Add(this.numericInterval);
@@ -345,5 +401,7 @@
 		private System.Windows.Forms.TextBox tbPassword;
 		private System.Windows.Forms.TextBox tbURLMol;
 		private System.Windows.Forms.NumericUpDown numericInterval;
+		private System.Windows.Forms.TextBox tbNrCard;
+		private System.Windows.Forms.TextBox tbSerieCard;
 	}
 }

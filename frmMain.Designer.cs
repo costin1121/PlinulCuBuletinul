@@ -29,7 +29,10 @@
         private void InitializeComponent()
         {
 			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.btnVerificareManuala = new System.Windows.Forms.Button();
+			this.btnGolireLog = new System.Windows.Forms.Button();
 			this.pnlNav = new System.Windows.Forms.Panel();
 			this.btnsettings = new System.Windows.Forms.Button();
 			this.btnDashbord = new System.Windows.Forms.Button();
@@ -42,11 +45,11 @@
 			this.label14 = new System.Windows.Forms.Label();
 			this.panel5 = new System.Windows.Forms.Panel();
 			this.pictureBox3 = new System.Windows.Forms.PictureBox();
-			this.label7 = new System.Windows.Forms.Label();
+			this.lbCountClienti = new System.Windows.Forms.Label();
 			this.label9 = new System.Windows.Forms.Label();
 			this.panel4 = new System.Windows.Forms.Panel();
 			this.pictureBox2 = new System.Windows.Forms.PictureBox();
-			this.label5 = new System.Windows.Forms.Label();
+			this.lbSuma = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.btnMinimize = new System.Windows.Forms.Button();
 			this.timerRunTask = new System.Windows.Forms.Timer(this.components);
@@ -63,6 +66,8 @@
 			// panel1
 			// 
 			this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+			this.panel1.Controls.Add(this.btnVerificareManuala);
+			this.panel1.Controls.Add(this.btnGolireLog);
 			this.panel1.Controls.Add(this.pnlNav);
 			this.panel1.Controls.Add(this.btnsettings);
 			this.panel1.Controls.Add(this.btnDashbord);
@@ -71,8 +76,46 @@
 			this.panel1.Location = new System.Drawing.Point(0, 0);
 			this.panel1.Margin = new System.Windows.Forms.Padding(4);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(248, 679);
+			this.panel1.Size = new System.Drawing.Size(248, 716);
 			this.panel1.TabIndex = 0;
+			// 
+			// btnVerificareManuala
+			// 
+			this.btnVerificareManuala.Dock = System.Windows.Forms.DockStyle.Top;
+			this.btnVerificareManuala.FlatAppearance.BorderSize = 0;
+			this.btnVerificareManuala.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnVerificareManuala.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnVerificareManuala.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+			this.btnVerificareManuala.Image = global::PlinulCuBuletinul.Properties.Resources.check;
+			this.btnVerificareManuala.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.btnVerificareManuala.Location = new System.Drawing.Point(0, 282);
+			this.btnVerificareManuala.Margin = new System.Windows.Forms.Padding(4);
+			this.btnVerificareManuala.Name = "btnVerificareManuala";
+			this.btnVerificareManuala.Size = new System.Drawing.Size(248, 46);
+			this.btnVerificareManuala.TabIndex = 2;
+			this.btnVerificareManuala.Text = "Verificare Manuala";
+			this.btnVerificareManuala.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+			this.btnVerificareManuala.UseVisualStyleBackColor = true;
+			this.btnVerificareManuala.Click += new System.EventHandler(this.btnVerificareManuala_Click);
+			// 
+			// btnGolireLog
+			// 
+			this.btnGolireLog.Dock = System.Windows.Forms.DockStyle.Top;
+			this.btnGolireLog.FlatAppearance.BorderSize = 0;
+			this.btnGolireLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnGolireLog.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnGolireLog.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+			this.btnGolireLog.Image = global::PlinulCuBuletinul.Properties.Resources.icons8_remove_25;
+			this.btnGolireLog.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.btnGolireLog.Location = new System.Drawing.Point(0, 236);
+			this.btnGolireLog.Margin = new System.Windows.Forms.Padding(4);
+			this.btnGolireLog.Name = "btnGolireLog";
+			this.btnGolireLog.Size = new System.Drawing.Size(248, 46);
+			this.btnGolireLog.TabIndex = 3;
+			this.btnGolireLog.Text = "Golire Log";
+			this.btnGolireLog.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+			this.btnGolireLog.UseVisualStyleBackColor = true;
+			this.btnGolireLog.Click += new System.EventHandler(this.btnGolireLog_Click);
 			// 
 			// pnlNav
 			// 
@@ -91,11 +134,12 @@
 			this.btnsettings.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnsettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
 			this.btnsettings.Image = global::PlinulCuBuletinul.Properties.Resources.settings;
-			this.btnsettings.Location = new System.Drawing.Point(0, 622);
+			this.btnsettings.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.btnsettings.Location = new System.Drawing.Point(0, 670);
 			this.btnsettings.Margin = new System.Windows.Forms.Padding(4);
 			this.btnsettings.Name = "btnsettings";
-			this.btnsettings.Size = new System.Drawing.Size(248, 57);
-			this.btnsettings.TabIndex = 1;
+			this.btnsettings.Size = new System.Drawing.Size(248, 46);
+			this.btnsettings.TabIndex = 5;
 			this.btnsettings.Text = "Setari";
 			this.btnsettings.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
 			this.btnsettings.UseVisualStyleBackColor = true;
@@ -110,10 +154,11 @@
 			this.btnDashbord.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnDashbord.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
 			this.btnDashbord.Image = global::PlinulCuBuletinul.Properties.Resources.home;
+			this.btnDashbord.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.btnDashbord.Location = new System.Drawing.Point(0, 190);
 			this.btnDashbord.Margin = new System.Windows.Forms.Padding(4);
 			this.btnDashbord.Name = "btnDashbord";
-			this.btnDashbord.Size = new System.Drawing.Size(248, 41);
+			this.btnDashbord.Size = new System.Drawing.Size(248, 46);
 			this.btnDashbord.TabIndex = 1;
 			this.btnDashbord.Text = "Acasa";
 			this.btnDashbord.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -173,10 +218,10 @@
 			// 
 			this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
 			this.panel7.Controls.Add(this.rtLog);
-			this.panel7.Location = new System.Drawing.Point(271, 299);
+			this.panel7.Location = new System.Drawing.Point(270, 301);
 			this.panel7.Margin = new System.Windows.Forms.Padding(4);
 			this.panel7.Name = "panel7";
-			this.panel7.Size = new System.Drawing.Size(929, 334);
+			this.panel7.Size = new System.Drawing.Size(929, 367);
 			this.panel7.TabIndex = 14;
 			// 
 			// rtLog
@@ -184,11 +229,11 @@
 			this.rtLog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
 			this.rtLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.rtLog.ForeColor = System.Drawing.SystemColors.Window;
-			this.rtLog.Location = new System.Drawing.Point(4, 4);
+			this.rtLog.Location = new System.Drawing.Point(0, 4);
 			this.rtLog.Margin = new System.Windows.Forms.Padding(4);
 			this.rtLog.Name = "rtLog";
 			this.rtLog.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-			this.rtLog.Size = new System.Drawing.Size(921, 326);
+			this.rtLog.Size = new System.Drawing.Size(921, 359);
 			this.rtLog.TabIndex = 1;
 			this.rtLog.Text = "";
 			// 
@@ -208,9 +253,9 @@
 			// 
 			this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
 			this.panel5.Controls.Add(this.pictureBox3);
-			this.panel5.Controls.Add(this.label7);
+			this.panel5.Controls.Add(this.lbCountClienti);
 			this.panel5.Controls.Add(this.label9);
-			this.panel5.Location = new System.Drawing.Point(751, 98);
+			this.panel5.Location = new System.Drawing.Point(725, 98);
 			this.panel5.Margin = new System.Windows.Forms.Padding(4);
 			this.panel5.Name = "panel5";
 			this.panel5.Size = new System.Drawing.Size(389, 160);
@@ -227,17 +272,17 @@
 			this.pictureBox3.TabIndex = 2;
 			this.pictureBox3.TabStop = false;
 			// 
-			// label7
+			// lbCountClienti
 			// 
-			this.label7.AutoSize = true;
-			this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(226)))), ((int)(((byte)(178)))));
-			this.label7.Location = new System.Drawing.Point(23, 70);
-			this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(102, 39);
-			this.label7.TabIndex = 1;
-			this.label7.Text = "12K+";
+			this.lbCountClienti.AutoSize = true;
+			this.lbCountClienti.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbCountClienti.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(226)))), ((int)(((byte)(178)))));
+			this.lbCountClienti.Location = new System.Drawing.Point(23, 70);
+			this.lbCountClienti.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.lbCountClienti.Name = "lbCountClienti";
+			this.lbCountClienti.Size = new System.Drawing.Size(37, 39);
+			this.lbCountClienti.TabIndex = 1;
+			this.lbCountClienti.Text = "0";
 			// 
 			// label9
 			// 
@@ -255,9 +300,9 @@
 			// 
 			this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
 			this.panel4.Controls.Add(this.pictureBox2);
-			this.panel4.Controls.Add(this.label5);
+			this.panel4.Controls.Add(this.lbSuma);
 			this.panel4.Controls.Add(this.label4);
-			this.panel4.Location = new System.Drawing.Point(297, 98);
+			this.panel4.Location = new System.Drawing.Point(275, 98);
 			this.panel4.Margin = new System.Windows.Forms.Padding(4);
 			this.panel4.Name = "panel4";
 			this.panel4.Size = new System.Drawing.Size(389, 160);
@@ -274,17 +319,17 @@
 			this.pictureBox2.TabIndex = 2;
 			this.pictureBox2.TabStop = false;
 			// 
-			// label5
+			// lbSuma
 			// 
-			this.label5.AutoSize = true;
-			this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-			this.label5.Location = new System.Drawing.Point(23, 70);
-			this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(117, 39);
-			this.label5.TabIndex = 1;
-			this.label5.Text = "$1234";
+			this.lbSuma.AutoSize = true;
+			this.lbSuma.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbSuma.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+			this.lbSuma.Location = new System.Drawing.Point(23, 70);
+			this.lbSuma.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.lbSuma.Name = "lbSuma";
+			this.lbSuma.Size = new System.Drawing.Size(101, 39);
+			this.lbSuma.TabIndex = 1;
+			this.lbSuma.Text = "LEI 0";
 			// 
 			// label4
 			// 
@@ -313,14 +358,12 @@
 			this.btnMinimize.UseVisualStyleBackColor = true;
 			this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
 			// 
-
-			// 
 			// frmMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-			this.ClientSize = new System.Drawing.Size(1225, 679);
+			this.ClientSize = new System.Drawing.Size(1225, 716);
 			this.Controls.Add(this.btnMinimize);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.label14);
@@ -330,12 +373,16 @@
 			this.Controls.Add(this.panel4);
 			this.Controls.Add(this.panel1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "frmMain";
 			this.RightToLeft = System.Windows.Forms.RightToLeft.No;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Form1";
 			this.Load += new System.EventHandler(this.frmMain_Load);
+			this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmMain_MouseDown);
+			this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmMain_MouseMove);
+			this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.frmMain_MouseUp);
 			this.panel1.ResumeLayout(false);
 			this.panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -365,15 +412,17 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lbCountClienti;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbSuma;
         private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.RichTextBox rtLog;
 		private System.Windows.Forms.Button btnMinimize;
 		private System.Windows.Forms.Timer timerRunTask;
+		private System.Windows.Forms.Button btnGolireLog;
+		private System.Windows.Forms.Button btnVerificareManuala;
 	}
 }
 
