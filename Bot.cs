@@ -244,7 +244,7 @@ namespace PlinulCuBuletinul
 				IWebElement btnComanda = driver.FindElement(By.Id("order-immediately-btn"));
 				act.MoveToElement(btnComanda).Click().Perform();
 				//btnComanda.Click();
-				Thread.Sleep(3500);
+				Thread.Sleep(4000);
 
 				//confirmdialog-cardOrder-confirm-orderImmediately-yes
 				IWebElement btnComandaConfirm = driver.FindElement(By.Id("confirmdialog-cardOrder-confirm-orderImmediately-yes"));
@@ -254,7 +254,7 @@ namespace PlinulCuBuletinul
 				//IWebElement btnComandaConfirmNO = driver.FindElement(By.Id("confirmdialog-cardOrder-confirm-orderImmediately-no"));
 				//act.MoveToElement(btnComandaConfirmNO).Click().Perform();
 
-				Thread.Sleep(3000);
+				Thread.Sleep(4000);
 				driver.Quit();
 
 			}
