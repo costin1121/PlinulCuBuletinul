@@ -39,6 +39,21 @@ namespace PlinulCuBuletinul
 			this.serie_card = serieCard;
 		}
 
+		public async void LaunchRaport()
+		{
+			try
+			{
+				BotRaport botRaportDriver = new BotRaport(this.url_mol, this.username_mol, this.password_mol, this.URL_SITE, this.consummer_key, this.consummer_secret);
+				//am dat drumul la generarea raportului
+				await Task.Run(botRaportDriver.startBotRaport);
+			}
+			catch(Exception ex)
+			{
+				frmMain.main.Log = "[" + DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss") + "] - " + ex.Message + Environment.NewLine;
+
+			}
+		}
+
 		public async void getOrderByDate(DateTime dataInceput, DateTime dataSfarsit)
 		{
 			try
@@ -62,6 +77,8 @@ namespace PlinulCuBuletinul
 				string date_creare = "";
 				string fullName = "";
 				string fullSerie = "";
+				int wc_id = 0;
+				double total_consum = 0;
 				bool isComandaOk = true;
 				int newID = 0;
 				int nrComenziAcceptate = 0;
@@ -105,6 +122,7 @@ namespace PlinulCuBuletinul
 								telefon = order.billing.phone;
 								paymentMethod = order.payment_method_title;
 								date_creare = order.date_created.ToString();
+								wc_id = (int)order.customer_id;
 								var line_items = order.line_items;
 								foreach (var item in line_items)
 								{
@@ -134,7 +152,9 @@ namespace PlinulCuBuletinul
 									// ultima data salvam clientul in baza
 									fullName = clientNume + " " + clientPrenume;
 									fullSerie = this.numar_card + this.serie_card;
-									Clienti client = new Clienti(fullName, fullSerie, totalComandat, tmpDataCreare, paymentMethod);
+									Clienti client = new Clienti(fullName, fullSerie, totalComandat, tmpDataCreare
+																, paymentMethod, wc_id,clientNume,clientPrenume,adresa1
+																, oras, judet,codPostal, tara, telefon, total_consum, email);
 									client.SaveClient();
 									frmMain.main.Log = "[" + DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss") + "] - " + "Clientul " + fullName + " a fost salvat cu success!" + "\r\n";
 									frmMain.main.UpdateClienti = Clienti.GetCountClienti().ToString();
@@ -166,6 +186,7 @@ namespace PlinulCuBuletinul
 								telefon = order.billing.phone;
 								paymentMethod = order.payment_method_title;
 								date_creare = order.date_created.ToString();
+								wc_id = (int)order.customer_id;
 								var line_items = order.line_items;
 								foreach (var item in line_items)
 								{
@@ -193,7 +214,9 @@ namespace PlinulCuBuletinul
 									// ultima data salvam clientul in baza
 									fullName = clientNume + " " + clientPrenume;
 									fullSerie = this.numar_card + this.serie_card;
-									Clienti client = new Clienti(fullName, fullSerie, totalComandat, tmpDataCreare, paymentMethod);
+									Clienti client = new Clienti(fullName, fullSerie, totalComandat, tmpDataCreare, paymentMethod
+																 , wc_id, clientNume, clientPrenume, adresa1, oras, judet, codPostal
+																 , tara, telefon, total_consum, email);
 									client.SaveClient();
 									frmMain.main.Log = "[" + DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss") + "] - " + "Clientul " + fullName + " a fost salvat cu success!" + "\r\n";
 									frmMain.main.UpdateClienti = Clienti.GetCountClienti().ToString();
@@ -241,6 +264,8 @@ namespace PlinulCuBuletinul
 				string date_creare = "";
 				string fullName = "";
 				string fullSerie = "";
+				int wc_id = 0;
+				double total_consum = 0;
 				bool isComandaOk = true;
 				int newID = 0;
 				int nrComenziAcceptate = 0;
@@ -284,6 +309,7 @@ namespace PlinulCuBuletinul
 								telefon = order.billing.phone;
 								paymentMethod = order.payment_method_title;
 								date_creare = order.date_created.ToString();
+								wc_id = (int)order.customer_id;
 								var line_items = order.line_items;
 								foreach(var item in line_items)
 								{
@@ -312,7 +338,9 @@ namespace PlinulCuBuletinul
 									// ultima data salvam clientul in baza
 									fullName = clientNume + " " + clientPrenume;
 									fullSerie = this.numar_card + this.serie_card;
-									Clienti client = new Clienti(fullName, fullSerie, totalComandat, tmpDataCreare, paymentMethod);
+									Clienti client = new Clienti(fullName, fullSerie, totalComandat, tmpDataCreare, paymentMethod
+																, wc_id, clientNume, clientPrenume, adresa1
+																, oras,judet,codPostal, tara, telefon, total_consum, email);
 									client.SaveClient();
 									frmMain.main.Log = "[" + DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss") + "] - " + "Clientul " + fullName + " a fost salvat cu success!" + "\r\n";
 									frmMain.main.UpdateClienti = Clienti.GetCountClienti().ToString();
@@ -344,6 +372,7 @@ namespace PlinulCuBuletinul
 								telefon = order.billing.phone;
 								paymentMethod = order.payment_method_title;
 								date_creare = order.date_created.ToString();
+								wc_id = (int)order.customer_id;
 								var line_items = order.line_items;
 								foreach (var item in line_items)
 								{
@@ -370,7 +399,9 @@ namespace PlinulCuBuletinul
 									lc.SaveLastIndexComanda(newID);
 									frmMain.main.Log = "[" + DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss") + "] - " + "Numarul cardului si ID-ul ultimei comenzi a fost salvata cu succes!" + "\r\n";
 									fullName = clientNume + " " + clientPrenume;
-									Clienti client = new Clienti(fullName, serie_card, totalComandat, tmpDataCreare, paymentMethod);
+									Clienti client = new Clienti(fullName, numar_serie, totalComandat, tmpDataCreare, paymentMethod
+																, wc_id, clientNume, clientPrenume, adresa1, oras, judet
+																, codPostal, tara, telefon,total_consum, email);
 									client.SaveClient();
 									frmMain.main.Log = "[" + DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss") + "] - " + "Clientul " + fullName + " a fost salvat cu success!" + "\r\n";
 									frmMain.main.UpdateClienti = Clienti.GetCountClienti().ToString();

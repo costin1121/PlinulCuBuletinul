@@ -8,7 +8,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System.Runtime.CompilerServices;
-using OpenQA.Selenium.DevTools.V107.CSS;
+//using OpenQA.Selenium.DevTools.V107.CSS;
 using static System.Windows.Forms.LinkLabel;
 using System.Reflection;
 using System.Security.Policy;

@@ -13,12 +13,14 @@ using Microsoft.Win32;
 using System.Timers;
 using Timer = System.Timers.Timer;
 using System.Threading;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace Dashboard
 {
     public partial class frmMain : Form
     {
 		static System.Timers.Timer timer;
+		static System.Timers.Timer timerRaport;
 		internal static frmMain main;
 		internal string Log
 		{
@@ -59,8 +61,8 @@ namespace Dashboard
 		public static string url_mol;
 		public static string serieCard;
 		public static string numarCard;
-		
-		private bool mouseDown;
+		public static string dataOraGenerareRaport;
+		private bool  mouseDown;
 		private Point lastLocation;
 
 		[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -93,7 +95,17 @@ namespace Dashboard
 			int lastComandaID = LastComanda.GetLastIndexComandaID();
             wooCommerce wc = new wooCommerce(url_site,consumer_key, consumer_secret, username_mol ,password_mol, url_mol, lastComandaID, numarCard, serieCard);
 			wc.getOrders();
-
+		}
+		private static void RunTaskRaport(Object source, System.Timers.ElapsedEventArgs e)
+		{
+			if (timerRaport != null)
+			{
+				timerRaport.Stop();
+				timerRaport.Dispose();
+			}
+			wooCommerce wc = new wooCommerce(url_site, consumer_key, consumer_secret, username_mol, password_mol, url_mol, 0, numarCard, serieCard);
+			wc.LaunchRaport();
+			initTimerRaport(dataOraGenerareRaport);
 		}
 		public void UpdateClientiLabel()
 		{
@@ -130,7 +142,13 @@ namespace Dashboard
                 timer.Stop();
                 timer.Dispose();
             }
-        }
+			if(timerRaport != null)
+			{
+				timerRaport.Stop();
+				timerRaport.Dispose();
+			}
+
+		}
 
         private void btnDashbord_Leave(object sender, EventArgs e)
         {
@@ -160,7 +178,7 @@ namespace Dashboard
 			url_mol	 = GetURLMol();
 			int intervalVerificare = GetIntervalValue();
 			serieCard = GetSerieCard();
-
+			dataOraGenerareRaport = GetOraRaport();
 			NumarGenerator ng = new NumarGenerator(numarCard);
 			numarCard =  ng.GetLastNrCard();
 			if (intervalVerificare < 2)
@@ -202,9 +220,14 @@ namespace Dashboard
 				this.Log = "[" + DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss") + "] - " + "Seria de card Mol este nula" + "\r\n";
 
 			}
+			else if (dataOraGenerareRaport == "")
+			{
+				this.Log = "[" + DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss") + "] - " + "Data generarii raportului este nula!" + "\r\n";
+			}
 			else
             {
                 initTimer(intervalVerificare);
+				initTimerRaport(dataOraGenerareRaport);
 				UpdateClientiLabel();
 				UpdateClientiSuma();
 			}
@@ -215,7 +238,8 @@ namespace Dashboard
 		{
             this.WindowState= FormWindowState.Minimized;
 		}
-        private int GetIntervalValue() { 
+		private int GetIntervalValue() 
+		{ 
         
             int intervalVerificare = 0;
             RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\PlinulCuBuletinul");
@@ -249,6 +273,7 @@ namespace Dashboard
 			return intervalVerificare;
 		}
 
+
 		private string GetUrlSite()
         {
             string url_site = "";
@@ -265,7 +290,23 @@ namespace Dashboard
 			return url_site;
 		}
 
-        private string GetConsumerKey()
+		private string GetOraRaport()
+		{
+			string ora_raport = "";
+			RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\PlinulCuBuletinul");
+			string keyName = @"HKEY_CURRENT_USER\SOFTWARE\PlinulCuBuletinul";
+			if (key != null)
+			{
+				if (Registry.GetValue(keyName, "data_generare_raport", null) != null)
+				{
+					ora_raport = key.GetValue("data_generare_raport").ToString();
+				}
+				key.Close();
+			}
+			return ora_raport;
+		}
+
+		private string GetConsumerKey()
         {
 			string consumer_key = "";
 			RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\PlinulCuBuletinul");
@@ -374,7 +415,26 @@ namespace Dashboard
 			main.Log = "[" + DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss") + "] - " + "Urmatoarea verificare este la data:" + newDate.ToString("dd/MM/yyyy hh:mm:ss") + "\r\n";
 			
 			timer.Start();
-			// de pus si in run task log la final
+			
+		}
+		public static void initTimerRaport(string oraRaport)
+		{
+			TimeSpan oraRap = TimeSpan.Parse(oraRaport, System.Globalization.CultureInfo.CurrentCulture);
+			DateTime nowTime = DateTime.Now;
+			DateTime scheduledTime = new DateTime(nowTime.Year, nowTime.Month, nowTime.Day, oraRap.Hours, oraRap.Minutes, 0, 0);
+			if (nowTime > scheduledTime)
+			{
+				scheduledTime = scheduledTime.AddDays(1);
+			}
+			double intervalVerificareRaport = (double)(scheduledTime - DateTime.Now).TotalMilliseconds;
+			timerRaport = new Timer(intervalVerificareRaport);
+			timerRaport.Elapsed += new System.Timers.ElapsedEventHandler(RunTaskRaport);
+			timerRaport.Interval = intervalVerificareRaport; //timer interval in mili seconds;
+			DateTime newDate = DateTime.Now.AddMinutes(intervalVerificareRaport);
+			main.Log = "[" + DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss") + "] - " + "Urmatoarea verificare a raportului este la data:" + scheduledTime.ToString("dd/MM/yyyy hh:mm:ss") + "\r\n";
+
+			timerRaport.Start();
+
 		}
 
 		private void btnGolireLog_Click(object sender, EventArgs e)

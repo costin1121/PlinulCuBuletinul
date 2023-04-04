@@ -1,2 +1,11 @@
 ﻿1.0.0.1
 1. Prima versiune
+
+1.0.0.2
+New Feature
+1. Finalizat implementare la anumita ora a raportului de consum se creaza comenzi pentru MLM pe baza
+datelor din raport
+Optimizare
+1. Adaugat manifest sa ruleze ca admin
+Bug Fix
+1. Rezolvat mici buguri de interfata

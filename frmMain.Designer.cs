@@ -179,7 +179,7 @@
 			// pictureBox1
 			// 
 			this.pictureBox1.Image = global::PlinulCuBuletinul.Properties.Resources.Untitled_11;
-			this.pictureBox1.Location = new System.Drawing.Point(73, 54);
+			this.pictureBox1.Location = new System.Drawing.Point(91, 51);
 			this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
 			this.pictureBox1.Name = "pictureBox1";
 			this.pictureBox1.Size = new System.Drawing.Size(84, 78);
@@ -378,7 +378,7 @@
 			this.Name = "frmMain";
 			this.RightToLeft = System.Windows.Forms.RightToLeft.No;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Form1";
+			this.Text = "Plinul cu Buletinul";
 			this.Load += new System.EventHandler(this.frmMain_Load);
 			this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmMain_MouseDown);
 			this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmMain_MouseMove);

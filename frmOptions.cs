@@ -26,6 +26,7 @@ namespace PlinulCuBuletinul
 		public string password_mol;
 		public string interval_trimitere;
 		public string serie_card;
+		public string dataGenerareRaport;
 		private bool SaveRegistryOptions()
 		{
 			if (tbURL.Text == ""){
@@ -71,6 +72,13 @@ namespace PlinulCuBuletinul
 				return false;
 
 			}
+			if(dtOraGenerareRaport.Text == "")
+			{
+				MessageBox.Show("Data generarii raportului nu este setata!", "Plinul Cu Buletinul", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return false;
+
+			}
+
 
 
 			RegistryKey key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\PlinulCuBuletinul");
@@ -82,6 +90,7 @@ namespace PlinulCuBuletinul
 			key.SetValue("password_mol", tbPassword.Text);
 			key.SetValue("interval_trimitere", numericInterval.Value.ToString());
 			key.SetValue("serie_card", tbSerieCard.Text);
+			key.SetValue("data_generare_raport", dtOraGenerareRaport.Text);
 			key.Close();
 			return true;
 		}
@@ -157,6 +166,14 @@ namespace PlinulCuBuletinul
 				{
 					serie_card = "";
 				}
+				if (Registry.GetValue(keyName, "data_generare_raport", null) != null)
+				{
+					dataGenerareRaport = key.GetValue("data_generare_raport").ToString();
+				}
+				else
+				{
+					dataGenerareRaport = DateTime.Now.ToString("HH:mm");
+				}
 
 				tbURL.Text = url_site;
 				tbConsumerKey.Text = consumer_key;
@@ -168,6 +185,7 @@ namespace PlinulCuBuletinul
 				NumarGenerator ng = new NumarGenerator("");
 				tbNrCard.Text = ng.GetLastNrCard();
 				tbSerieCard.Text = serie_card;
+				dtOraGenerareRaport.Text = dataGenerareRaport;
 				key.Close();
 			}
 		}
@@ -177,6 +195,10 @@ namespace PlinulCuBuletinul
 			if (interval_trimitere != null)
 			{
 				frmMain.initTimer(Convert.ToInt32(interval_trimitere));
+			}
+			if(dataGenerareRaport != null)
+			{
+				frmMain.initTimerRaport(dataGenerareRaport);
 			}
 			this.Close();
 		}
@@ -223,10 +245,10 @@ namespace PlinulCuBuletinul
 				frmMain.numarCard = tbNrCard.Text;
 				NumarGenerator ng = new NumarGenerator(frmMain.numarCard);
 				ng.SaveLastNrCard(frmMain.numarCard);
-				
+				frmMain.dataOraGenerareRaport = dtOraGenerareRaport.Text;
 				frmMain.main.Log = "[" + DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss") + "] - " + "Optiunile au fost salvate cu success!" + Environment.NewLine;
 				frmMain.initTimer(newValue);
-
+				frmMain.initTimerRaport(dtOraGenerareRaport.Text);
 				this.Close();
 			}
 		}
@@ -244,6 +266,11 @@ namespace PlinulCuBuletinul
 		}
 
 		private void label6_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void tbURLMol_TextChanged(object sender, EventArgs e)
 		{
 
 		}
