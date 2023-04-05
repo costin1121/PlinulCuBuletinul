@@ -28,13 +28,13 @@
         "Entry"
         {
         "MsmKey" = "8:_0A46371DA8A6221A763820050E19C6BA"
-        "OwnerKey" = "8:_5DE31D9E0C5CC8DA24E3AE55D8D87480"
+        "OwnerKey" = "8:_DFC16171FC0A4203A043C23DA6928AB1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_0A46371DA8A6221A763820050E19C6BA"
-        "OwnerKey" = "8:_DFC16171FC0A4203A043C23DA6928AB1"
+        "OwnerKey" = "8:_5DE31D9E0C5CC8DA24E3AE55D8D87480"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -189,6 +189,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_923C545EDAC849F7A26E180487273061"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_966A7846BDCFF20686C2134FE93F3ED7"
         "OwnerKey" = "8:_DFC16171FC0A4203A043C23DA6928AB1"
         "MsmSig" = "8:_UNDEFINED"
@@ -221,12 +227,6 @@
         {
         "MsmKey" = "8:_A44C1B085243B407F181550F0B820200"
         "OwnerKey" = "8:_DFC16171FC0A4203A043C23DA6928AB1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_AD1169E7A7494B34A929ECADB479EF41"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -996,6 +996,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_923C545EDAC849F7A26E180487273061"
+            {
+            "SourcePath" = "8:D:\\chromedriver_win32 (2)\\chromedriver.exe"
+            "TargetName" = "8:chromedriver.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_1EB461BA64A8400E8399107A04135D64"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_966A7846BDCFF20686C2134FE93F3ED7"
             {
             "AssemblyRegister" = "3:1"
@@ -1120,26 +1140,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AD1169E7A7494B34A929ECADB479EF41"
-            {
-            "SourcePath" = "8:..\\bin\\Debug\\chromedriver.exe"
-            "TargetName" = "8:chromedriver.exe"
-            "Tag" = "8:"
-            "Folder" = "8:_1EB461BA64A8400E8399107A04135D64"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B2F27AE216993D13430C83B2ECAA69D6"
             {
             "AssemblyRegister" = "3:1"
@@ -1259,7 +1259,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Plinul cu Buletinul"
         "ProductCode" = "8:{66859694-A5DC-409C-86F5-60D150D71907}"
-        "PackageCode" = "8:{DECA03E0-42C7-463E-B512-56E5169D2F28}"
+        "PackageCode" = "8:{EEC3363F-EC0C-4E33-8248-890083B6506F}"
         "UpgradeCode" = "8:{55603424-C485-43B9-95C4-725D34247ACF}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"

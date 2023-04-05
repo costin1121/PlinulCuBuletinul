@@ -293,7 +293,7 @@ namespace PlinulCuBuletinul
 				Thread.Sleep(4000);
 				
 				// pentru debug se comenteaza partea asta de aici urmatoarea linie pentru release se decomenteaza
-
+				
 				driver.Navigate().GoToUrl("https://b2bpartnerportal.com/occ/#/reports/create");
 				Thread.Sleep(4000);
 				//se lanseaza raportul
