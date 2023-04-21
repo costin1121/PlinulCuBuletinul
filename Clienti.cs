@@ -107,6 +107,18 @@ namespace PlinulCuBuletinul
 			}
 		}
 
+		public static BsonDocument GetClientByWcID(int wcID)
+		{
+			BsonDocument clienti = null;
+			using (var db = new LiteDatabase(@System.IO.Directory.GetCurrentDirectory() + "\\" + "plinulcubuletinul.db"))
+			{
+				var collection = db.GetCollection("clienti");
+				clienti = collection.FindOne(Query.EQ("woocommerce_id", wcID));
+
+				return clienti;
+			}
+		}
+
 		public static void UpdateTotalConsumByCodCard(string codCard, double totalConsum)
 		{
 			using (var db = new LiteDatabase(@System.IO.Directory.GetCurrentDirectory() + "\\" + "plinulcubuletinul.db"))

@@ -185,8 +185,8 @@ namespace PlinulCuBuletinul
 				{
 					product_id = 778,
 					name = "Alimentare",
-					price = (decimal?)valoareAlimentare,
-					total = (decimal?)valoareAlimentare,
+					price = (decimal?)cantitate,
+					total = (decimal?)cantitate,
 					quantity = 1
 				}
 

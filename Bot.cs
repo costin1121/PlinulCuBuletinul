@@ -17,6 +17,8 @@ using System.Threading;
 using OpenQA.Selenium.Interactions;
 using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+using HtmlAgilityPack;
+using HtmlDocument = HtmlAgilityPack.HtmlDocument;
 
 namespace PlinulCuBuletinul
 {
@@ -67,7 +69,91 @@ namespace PlinulCuBuletinul
 			this.numar_serie = numarSerie;
 		}
 
-		public void startBot()
+		public void startBotAlimentareCard()
+		{
+			ChromeDriverService service = ChromeDriverService.CreateDefaultService();
+			service.HideCommandPromptWindow = true;
+			var driver = new ChromeDriver(service);
+
+			Actions act = new Actions(driver);
+			driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
+			//string url = "https://b2b.mol.hu/openam/UI/Logout?goto=https://b2bpartnerportal.com/pp/login?lang=ro";
+
+			driver.Manage().Window.Maximize();
+
+			driver.Navigate().GoToUrl(url_mol);
+
+			//WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
+			IWebElement molPartenerChangeLanguage = driver.FindElement(By.Id("langDropdown"));
+			IWebElement molPartenerChangeLanguageSelect = driver.FindElement(By.Id("langRo"));
+			IWebElement molPartenerLoginUsername = driver.FindElement(By.Name("username"));
+			IWebElement molPartenerLoginPassword = driver.FindElement(By.Name("password"));
+			act.MoveToElement(molPartenerLoginUsername).Click().SendKeys(username_mol).Perform();
+			act.MoveToElement(molPartenerLoginPassword).Click().SendKeys(password_mol).Perform();
+			act.MoveToElement(molPartenerLoginPassword).SendKeys(OpenQA.Selenium.Keys.Enter).Perform();
+			//molPartenerLoginUsername.SendKeys(username_mol);
+			//molPartenerLoginPassword.SendKeys(password_mol);
+			//molPartenerLoginPassword.SendKeys(OpenQA.Selenium.Keys.Enter);
+			frmMain.main.Log = "[" + DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss") + "] - " + "Autentificat cu succes pe site-ul Mol Partener!" + Environment.NewLine;
+
+			driver.Navigate().GoToUrl("https://b2bpartnerportal.com/occ/#/dashboard");
+			Thread.Sleep(4000);
+
+			driver.Navigate().GoToUrl("https://b2bpartnerportal.com/occ/#/card-management");
+
+			IWebElement cardName = driver.FindElement(By.Id("cardComplexSearch"));
+			cardName.Clear();
+			act.MoveToElement(cardName).Click().SendKeys(this.numar_serie).Perform();
+
+			//buttonSearch
+			IWebElement btnSearch = driver.FindElement(By.Id("buttonSearch"));
+			act.MoveToElement(btnSearch).Click().Perform();
+
+			frmMain.main.Log = "[" + DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss") + "] - " + "Card identificat cu success in sistemul MOL!" + Environment.NewLine;
+
+			Thread.Sleep(4000);
+
+			//am apasat butonul de editare
+			IWebElement btnEditLimita = driver.FindElement(By.Id("card-detail-current-usage-edit"));
+			act.MoveToElement(btnEditLimita).Click().Perform();
+
+			////card-detail-current-usage-input-dailyLimit
+			IWebElement editLimita = driver.FindElement(By.XPath("//*[@id=\"undefined-currency-input\"]"));
+			act.MoveToElement(editLimita).Click().Perform(); // dau click
+
+			
+			var valoareActuala = editLimita.GetAttribute("value").Replace("RON", "");
+			var limitaNoua = Convert.ToDouble(valoareActuala) + this.totalComandat;
+			
+			
+			IWebElement limitaActualaZilnica = driver.FindElement(By.Id("card-detail-current-usage-input-dailyLimit"));
+			act.MoveToElement(limitaActualaZilnica).DoubleClick().SendKeys(OpenQA.Selenium.Keys.Backspace).SendKeys(limitaNoua.ToString()).Perform();
+			Thread.Sleep(1000);
+
+			IWebElement limitaActualaSaptamanala = driver.FindElement(By.Id("card-detail-current-usage-input-weeklyLimit"));
+			act.MoveToElement(limitaActualaSaptamanala).DoubleClick().SendKeys(OpenQA.Selenium.Keys.Backspace).SendKeys(limitaNoua.ToString()).Perform();
+			Thread.Sleep(1000);
+
+			IWebElement limitaActualaLunara = driver.FindElement(By.Id("card-detail-current-usage-input-monthlyLimit"));
+			act.MoveToElement(limitaActualaLunara).DoubleClick().SendKeys(OpenQA.Selenium.Keys.Backspace).SendKeys(limitaNoua.ToString()).Perform();
+			Thread.Sleep(1000);
+
+			IWebElement limitaActualaTrimestriala = driver.FindElement(By.Id("card-detail-current-usage-input-quarterlyLimit"));
+			act.MoveToElement(limitaActualaTrimestriala).DoubleClick().SendKeys(OpenQA.Selenium.Keys.Backspace).SendKeys(limitaNoua.ToString()).Perform();
+			Thread.Sleep(1000);
+
+			IWebElement limitaActualaAnuala = driver.FindElement(By.Id("card-detail-current-usage-input-yearlyLimit"));
+			act.MoveToElement(limitaActualaAnuala).DoubleClick().SendKeys(OpenQA.Selenium.Keys.Backspace).SendKeys(limitaNoua.ToString()).Perform();
+			Thread.Sleep(1000);
+			
+			IWebElement btnSalveaza = driver.FindElement(By.Id("card-detail-current-usage-save"));
+			act.MoveToElement(btnSalveaza).Click().Perform();
+
+			Thread.Sleep(4000);
+			driver.Quit();
+		}
+
+		public void startBotCardNou()
 		{
 			try
 			{

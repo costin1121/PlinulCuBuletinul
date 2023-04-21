@@ -164,11 +164,20 @@ namespace Dashboard
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            Application.Exit();
+            //Application.Exit();
+
+            this.WindowState = FormWindowState.Minimized;
+            ShowInTaskbar = false;
+            notifyIcon.Visible = true;
+            notifyIcon.BalloonTipTitle = "Notificare";
+            notifyIcon.BalloonTipText = "PCB ruleaza in fundal..";
+            notifyIcon.ShowBalloonTip(3000);
         }
 
-		private void frmMain_Load(object sender, EventArgs e)
+        private void frmMain_Load(object sender, EventArgs e)
 		{
+			notifyIcon.Text = "PCB";
+
 			this.Log = "[" + DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss") + "] - " + "Aplicatia a fost pornita!" + "\r\n";
             url_site = GetUrlSite();
             consumer_key= GetConsumerKey();
@@ -237,6 +246,11 @@ namespace Dashboard
 		private void btnMinimize_Click(object sender, EventArgs e)
 		{
             this.WindowState= FormWindowState.Minimized;
+			ShowInTaskbar = false;
+			notifyIcon.Visible = true;
+			notifyIcon.BalloonTipTitle = "Notificare";
+			notifyIcon.BalloonTipText = "PCB ruleaza in fundal..";
+			notifyIcon.ShowBalloonTip(5000);
 		}
 		private int GetIntervalValue() 
 		{ 
@@ -503,5 +517,16 @@ namespace Dashboard
 		{
 			mouseDown = false;
 		}
-	}
+
+        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+			this.WindowState= FormWindowState.Normal;
+			ShowInTaskbar = true;
+        }
+
+        private void inchidereToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+			Application.Exit();
+        }
+    }
 }
