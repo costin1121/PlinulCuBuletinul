@@ -15,3 +15,7 @@ New Feature
 1. Finalizat parte de alimentare card acum comenzile se duc pe 2 ramuri una de creare card nou si una de alimentare card 
 Optimizare
 1. Optimizat parte de interfata au fost adagate notify icon
+
+1.0.0.4
+Optimizare 
+1. Updatat toate librariile utilizate de proiect
